@@ -8,15 +8,9 @@ export function startAddingPost(post) {
     }
 }
 
-export function startUpdatingPost(post) {
-    return (dispatch) => {
-        return database.collection('posts').doc(post.id).update(post);
-    }
-}
-
 export function startRemovingPost(postId) {
     return (dispatch) => {
-        return database.collection('posts').doc(postId).delete().then(() => {
+        return database.collection('posts').doc(postId.toString()).delete().then(() => {
             dispatch(removePost(postId));
         });
     }
