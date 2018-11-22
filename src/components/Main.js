@@ -11,7 +11,7 @@ class Main extends Component {
     }
 
     componentDidMount() {
-        //this.props.removePost(1);
+        this.props.startLoadingPost();
     }
 
     componentDidUpdate(prevProps, prevState) {

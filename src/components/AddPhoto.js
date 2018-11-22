@@ -11,7 +11,7 @@ class AddPhoto extends Component {
         const link = event.target.elements.link.value;
         const description = event.target.elements.description.value;
         if (description && link) {
-            this.props.addPost({
+            this.props.startAddingPost({
                 id: Number(new Date()),
                 description: description,
                 imageLink: link
