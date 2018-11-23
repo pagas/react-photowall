@@ -29,6 +29,27 @@ export function startLoadingPost() {
     }
 }
 
+export function startLoadingComments(postId) {
+    return (dispatch)=> {
+        return database.collection('comments').where('postId', '==', postId).get().then((querySnapshot) => {
+            const comments = [];
+            querySnapshot.forEach(doc => {
+                comments.push(doc.data())
+            })
+
+            dispatch(loadComments(comments));
+        })
+    }
+}
+
+export function startAddingComment(comment, postId) {
+    return (dispatch) => {
+        return database.collection('comments').add({comment: comment, postId: postId}).then(() => {
+            dispatch(addComment(comment, postId));
+        });
+    }
+}
+
 export function removePost(postId) {
     return {
         type: 'REMOVE_POST',
@@ -55,5 +76,11 @@ export function loadPosts(posts) {
     return {
         type: 'LOAD_POSTS',
         posts
+    }
+}
+export function loadComments(comments) {
+    return {
+        type: 'LOAD_COMMENTS',
+        comments
     }
 }

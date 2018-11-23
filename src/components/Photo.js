@@ -16,7 +16,7 @@ function Photo(props) {
             }}>Remove</button>
             <Link to={`/single/${post.id}`} className="button">
                 {/*<div className="speech-bubble"></div>*/}
-                <div className="comment-count">{props.comments[post.id] ? props.comments[post.id].length : 0}</div>
+                <div className="comment-count">{props.comments.filter((comment) => comment.postId === post.id).length}</div>
             </Link>
         </div>
     </figure>

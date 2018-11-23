@@ -9,14 +9,14 @@ class Comments extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.addComment(event.target.elements.comment.value, this.props.postId);
+        this.props.startAddingComment(event.target.elements.comment.value, this.props.postId);
         event.target.elements.comment.value = '';
     }
     render() {
         return <div className="comment">
             {
                 this.props.comments.map((comment, index) => {
-                    return <p key={index}>{comment}</p>
+                    return <p key={index}>{comment.comment}</p>
                 })
             }
 

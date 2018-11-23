@@ -11,6 +11,9 @@ class Main extends Component {
     }
 
     componentDidMount() {
+     //   this.props.startLoadingPost();
+    }
+    componentWillMount() {
         this.props.startLoadingPost();
     }
 
@@ -32,9 +35,11 @@ class Main extends Component {
                 <AddPhoto {...this.props} />
             )}/>
 
-            <Route path="/single/:id" render={(params) => (
-                <Single {...this.props} {...params}  />
-            )}/>
+            {this.props.posts.length &&
+                <Route path="/single/:id" render={(params) => (
+                    <Single {...this.props} {...params}  />
+                )}/>
+            }
         </div>
     }
 }

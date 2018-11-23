@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 function PhotoWall(props) {
-    console.log('photowall', props)
     return <div>
         <Link className="addIcon" to="/addPhoto">Add Photo</Link>
 
